@@ -1,6 +1,7 @@
 # AWS Lambda dependencies for Python(3.8) KWT Authenticator
 [Python Cryptography Toolkit (pycrypto)] compiled and packaged for AWS Lambda python version 3.8 .
 
+Disclaimer : Some packages may not be required, check all the dependencies
 
 # Setup
 You can simply download and include the Crypto folder in your project, zip and upload it to Lambda.

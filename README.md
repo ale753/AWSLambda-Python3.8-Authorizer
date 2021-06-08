@@ -25,9 +25,5 @@ Now you must deploy your lambda function with this zip archive. For more informa
 Correctly configure your AWS CLI with an access key id and a secret access key id, then launch :
 
 ```
-aws lambda update-function-code --function-name authorizer_test --zip-file fileb://package.zip
+aws lambda update-function-code --function-name authorizer --zip-file fileb://package.zip
 ```
-
-In my case I have created a lambda function called "authorizer_test"	
-```
-

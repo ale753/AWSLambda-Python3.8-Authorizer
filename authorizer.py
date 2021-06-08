@@ -20,13 +20,6 @@ COGNITO_APP_CLIENT_ID = os.environ['COGNITO_APP_CLIENT_ID']
 COGNITO_USER_POOL_ID = os.environ['COGNITO_USER_POOL_ID']
 
 
-#JWKS altri provider
-#https://www.googleapis.com/oauth2/v3/certs #Google
-#https://www.facebook.com/.well-known/oauth/openid/jwks/ #Facebook #access_token
-#
-
-
-
 def lambda_handler(event, context):
 
     print(event)
@@ -35,8 +28,6 @@ def lambda_handler(event, context):
     #print("Client token: " + event['authorizationToken'])
     #print("Method ARN: " + event['methodArn'])
     
-    #Settare bene questi parametri
-    region = 'us-east-1'
     userpool_id = COGNITO_USER_POOL_ID
     app_client_id = COGNITO_APP_CLIENT_ID
 
@@ -117,29 +108,6 @@ def lambda_handler(event, context):
     
     print(response['Users'][0]['Attributes'])
     
-    trial_already_requested = 0
-    for element in response['Users'][0]['Attributes'] :
-        if (element['Name'] == "custom:TrialRequested") :
-            if (element['Value'] == "true") :
-                trial_already_requested = 1
-                break
-    
-     
-    if (trial_already_requested == 0) :          
-                
-        response = client.admin_update_user_attributes(
-                UserPoolId=userpool_id,
-                Username=principalId,
-                UserAttributes=[
-                {
-                    'Name': 'custom:TrialRequested',
-                    'Value': 'true'
-                },
-            ]
-        
-            )
-  
-    print(response)
     '''
 
     '''
